@@ -51,11 +51,11 @@
              @match selects the document section(s) to be used in resolving citations.
              @use indicates the the string that will be used in citations. -->
         <citeStructure match="//front/div[@type='introduction']" use="'Introduction'">
-          <!-- Defines the dientifier to use for this structure -->
+          <!-- Defines the identifier to use for this structure -->
           <citeData property="dc:identifier" use="@xml:id"/>
           <!-- Defines the title to be used for this structure (e.g. in a ToC) -->
           <citeData property="dc:title" use="'Introduction'"/>
-          <!-- Specifies a function for this structure, in this case, is should be used as and entry in the ToC -->
+          <!-- Specifies a function for this structure, in this case, it should be used as an entry in the ToC -->
           <citeData property="#function" use="'toc-entry'"/>
           <citeStructure match="./div[@type='section']" use="head" delim=", ">
             <citeData property="dc:title" use="head"/>
@@ -78,13 +78,17 @@
             <citeData property="#function" use="'split'"/>
           </citeStructure>
         </citeStructure>
+        <!-- The -->
         <citeStructure match="//div[@type='textpart']" use="@n" unit="poem">
           <citeData property="dc:identifier" use="@xml:id"/>
           <citeData property="dc:title" use="head"/>
           <citeData property="#function" use="'toc-entry'"/>
           <citeData property="#function" use="'split'"/>
+          <citeData property="#function" use="'citable'"/>
           <citeData property="dc:requires" use="//front/div[@type='bibliography']"/>
-          <citeStructure match=".//l[parent::div or parent::lem or parent::lg]" use="@n" delim="." unit="line"/>
+          <citeStructure match=".//l[parent::div or parent::lem or parent::lg]" use="@n" delim="." unit="line">
+            <citeData property="#function" use="'citable'"/>
+          </citeStructure>
         </citeStructure>
       </refsDecl>
     </encodingDesc>

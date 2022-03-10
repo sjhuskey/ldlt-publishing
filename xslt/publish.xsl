@@ -354,7 +354,7 @@
     <xsl:variable name="current" select="."/>
     <xsl:variable name="use" select="'xs:string(' || @use || ')'"/>
     <xsl:choose>
-      <xsl:when test="@unit">
+      <xsl:when test="dts:resolve_citedata(.,$current,'#function') = 'citable'">
         <xsl:for-each select="dts:resolve_citestructure($context, .)">
           <xsl:copy>
             <xsl:copy-of select="@*"/>
@@ -379,7 +379,7 @@
     <xsl:variable name="current" select="."/>
     <xsl:variable name="use" select="'xs:string(' || @use || ')'"/>
     <xsl:choose>
-      <xsl:when test="@unit">
+      <xsl:when test="dts:resolve_citedata(.,$current,'#function') = 'citable'">
         <xsl:for-each select="dts:resolve_citestructure($context,.)">
           <xsl:sequence select="xs:string(@xml:id)"/>
           <xsl:apply-templates select="$current/citeStructure" mode="citable-list">
@@ -403,7 +403,7 @@
     <xsl:param name="parentmatch" select="''"/>
     <xsl:variable name="current" select="."/>
     <xsl:choose>
-      <xsl:when test="@unit">
+      <xsl:when test="dts:resolve_citedata(.,$current,'#function') = 'citable'">
         <xsl:variable name="use" select="'xs:string(' || @use || ')'"/>
         <xsl:variable name="delim" select="@delim"/>
         <xsl:variable name="matches" select="dts:resolve_citestructure($context,.)"/>
