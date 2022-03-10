@@ -78,7 +78,7 @@
             <citeData property="#function" use="'split'"/>
           </citeStructure>
         </citeStructure>
-        <!-- The 'citable' function makes e.g., 4:100 resolvable to peom 4, line 100 -->
+        <!-- The 'citable' function makes e.g., 4:100 resolvable to peom 4, line 100. -->
         <citeStructure match="//div[@type='textpart']" use="@n" unit="poem">
           <citeData property="dc:identifier" use="@xml:id"/>
           <citeData property="dc:title" use="head"/>
