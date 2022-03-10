@@ -44,6 +44,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>{//text/front/titlePage/docTitle/titlePart}</title>
         <link rel="stylesheet" href="../css/tei-html.css"/>
+        <script>
+          let citables = {{<xsl:apply-templates select="$doc-with-ids//refsDecl/citeStructure" mode="citations"/>}}
+          let resolveCite = function() {{
+          window.location = citables[document.querySelector("input[name=getcite]").value.toString()];
+          }}
+        </script>
       </head>
       <body>
         <div id="tei">
@@ -55,6 +61,11 @@
         <xsl:for-each select="$doc-with-ids//refsDecl//citeStructure[citeData[@property='#function' and contains(@use,'split')]]">
           <xsl:apply-templates select="." mode="split"/>
         </xsl:for-each>
+        <div id="citesearch">
+          <form>
+            <label for="getcite">Find citation</label> <input type="text" name="getcite"/> <button onclick="resolveCite(); return false;">Go</button>
+          </form>
+        </div>
       </body>
     </html>
   </xsl:template>

@@ -17,7 +17,7 @@ let behaviors = {
       }],
       ["[unit=character]", function(elt) {
         let span = document.createElement("span");
-        span.innerHTML = this.repeat(" ̣", Number.parseInt(elt.getAttribute("quantity")));
+        span.innerHTML = this.repeat("*", Number.parseInt(elt.getAttribute("quantity")));
         return span;
       }],
       ["_", ["<span>*</span>"]]
