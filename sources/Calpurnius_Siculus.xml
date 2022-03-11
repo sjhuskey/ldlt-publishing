@@ -34,13 +34,6 @@
       </sourceDesc>
     </fileDesc>
     <encodingDesc>
-      <classDecl>
-        <taxonomy>
-          <category xml:id="function">
-            <catDesc>Defines a function for a structural unit, such as an entry in a table of contents.</catDesc>
-          </category>
-        </taxonomy>
-      </classDecl>
       <listPrefixDef>
         <prefixDef ident="dc" matchPattern="([a-zA-Z]+)" replacementPattern="http://purl.org/dc/terms/$1"/>
       </listPrefixDef>
@@ -56,13 +49,13 @@
           <!-- Defines the title to be used for this structure (e.g. in a ToC) -->
           <citeData property="dc:title" use="'Introduction'"/>
           <!-- Specifies a function for this structure, in this case, it should be used as an entry in the ToC -->
-          <citeData property="#function" use="'toc-entry'"/>
+          <citeData property="function" use="'toc-entry'"/>
           <citeStructure match="./div[@type='section']" use="head" delim=", ">
             <citeData property="dc:title" use="head"/>
             <citeData property="dc:identifier" use="@xml:id"/>
-            <citeData property="#function" use="'toc-entry'"/>
+            <citeData property="function" use="'toc-entry'"/>
             <!-- This structure should be split out into a separate document -->
-            <citeData property="#function" use="'split'"/>
+            <citeData property="function" use="'split'"/>
             <!-- When it is split out, the bibliography should go along with it -->
             <citeData property="dc:requires" use="//front/div[@type='bibliography']"/>
           </citeStructure>
@@ -70,25 +63,22 @@
         <citeStructure match="//front/div[@type='bibliography']" use="head">
           <citeData property="dc:identifier" use="@xml:id"/>
           <citeData property="dc:title" use="head"/>
-          <citeData property="#function" use="'toc-entry'"/>
+          <citeData property="function" use="'toc-entry'"/>
           <citeStructure match="./div[@type='bibliography']" use="head" delim=", ">
             <citeData property="dc:identifier" use="@xml:id"/>
             <citeData property="dc:title" use="head"/>
-            <citeData property="#function" use="'toc-entry'"/>
-            <citeData property="#function" use="'split'"/>
+            <citeData property="function" use="'toc-entry'"/>
+            <citeData property="function" use="'split'"/>
           </citeStructure>
         </citeStructure>
-        <!-- The 'citable' function makes e.g., 4:100 resolvable to peom 4, line 100.  -->
+        <!-- The @unit attribute marks a citeStructure as a citable unit and makes e.g., 4.100 resolvable to poem 4, line 100.  -->
         <citeStructure match="//div[@type='textpart']" use="@n" unit="poem">
           <citeData property="dc:identifier" use="@xml:id"/>
           <citeData property="dc:title" use="head"/>
-          <citeData property="#function" use="'toc-entry'"/>
-          <citeData property="#function" use="'split'"/>
-          <citeData property="#function" use="'citable'"/>
+          <citeData property="function" use="'toc-entry'"/>
+          <citeData property="function" use="'split'"/>
           <citeData property="dc:requires" use="//front/div[@type='bibliography']"/>
-          <citeStructure match=".//l[parent::div or parent::lem or parent::lg]" use="@n" delim="." unit="line">
-            <citeData property="#function" use="'citable'"/>
-          </citeStructure>
+          <citeStructure match=".//l[parent::div or parent::lem or parent::lg]" use="@n" delim="." unit="line"/>
         </citeStructure>
       </refsDecl>
     </encodingDesc>

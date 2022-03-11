@@ -58,7 +58,7 @@
             <xsl:copy-of select="$toc"/>
           </div>
         </div>
-        <xsl:for-each select="$doc-with-ids//refsDecl//citeStructure[citeData[@property='#function' and contains(@use,'split')]]">
+        <xsl:for-each select="$doc-with-ids//refsDecl//citeStructure[citeData[@property='function' and contains(@use,'split')]]">
           <xsl:apply-templates select="." mode="split"/>
         </xsl:for-each>
         <div id="citesearch">
@@ -160,16 +160,16 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:if test="dts:resolve_citedata(.,.,'#function') = 'toc-entry'">
+    <xsl:if test="dts:resolve_citedata(.,.,'function') = 'toc-entry'">
       <xsl:for-each select="$matches/*">
         <li>
           <!-- When a toc-entry has an ancestor that's will be split into a separate document, make a link to split_document.html#id, 
                when it's to be split out itself, do split_document.html. No link otherwise. -->
           <xsl:choose>
-            <xsl:when test="$current/citeData[@property='#function' and contains(@use,'split')] or $current/ancestor::citeStructure[citeData[@property='#function' and contains(@use,'split')]] ">
+            <xsl:when test="$current/citeData[@property='function' and contains(@use,'split')] or $current/ancestor::citeStructure[citeData[@property='function' and contains(@use,'split')]] ">
               <a>
                 <xsl:variable name="link">
-                  <xsl:variable name="split" select="$current/ancestor::citeStructure[citeData[@property='#function' and contains(@use,'split')]]"/>
+                  <xsl:variable name="split" select="$current/ancestor::citeStructure[citeData[@property='function' and contains(@use,'split')]]"/>
                   <xsl:choose>
                     <xsl:when test="$split">
                       <xsl:variable name="ancestor" select="dts:resolve_id($context,$split)"/>
@@ -210,10 +210,10 @@
               </xsl:choose>
             </xsl:otherwise>
           </xsl:choose>
-          <xsl:if test="$current/citeStructure[dts:resolve_citedata(.,.,'#function') = 'toc-entry']">
+          <xsl:if test="$current/citeStructure[dts:resolve_citedata(.,.,'function') = 'toc-entry']">
             <ul>
               <xsl:call-template name="process-toc">
-                <xsl:with-param name="citestructures" select="$current/citeStructure[dts:resolve_citedata(.,.,'#function') = 'toc-entry']"/>
+                <xsl:with-param name="citestructures" select="$current/citeStructure[dts:resolve_citedata(.,.,'function') = 'toc-entry']"/>
                 <xsl:with-param name="context" select="."></xsl:with-param>
               </xsl:call-template>
             </ul>
@@ -354,7 +354,7 @@
     <xsl:variable name="current" select="."/>
     <xsl:variable name="use" select="'xs:string(' || @use || ')'"/>
     <xsl:choose>
-      <xsl:when test="dts:resolve_citedata(.,$current,'#function') = 'citable'">
+      <xsl:when test="@unit">
         <xsl:for-each select="dts:resolve_citestructure($context, .)">
           <xsl:copy>
             <xsl:copy-of select="@*"/>
@@ -379,7 +379,7 @@
     <xsl:variable name="current" select="."/>
     <xsl:variable name="use" select="'xs:string(' || @use || ')'"/>
     <xsl:choose>
-      <xsl:when test="dts:resolve_citedata(.,$current,'#function') = 'citable'">
+      <xsl:when test="@unit">
         <xsl:for-each select="dts:resolve_citestructure($context,.)">
           <xsl:sequence select="xs:string(@xml:id)"/>
           <xsl:apply-templates select="$current/citeStructure" mode="citable-list">
@@ -403,7 +403,7 @@
     <xsl:param name="parentmatch" select="''"/>
     <xsl:variable name="current" select="."/>
     <xsl:choose>
-      <xsl:when test="dts:resolve_citedata(.,$current,'#function') = 'citable'">
+      <xsl:when test="@unit">
         <xsl:variable name="use" select="'xs:string(' || @use || ')'"/>
         <xsl:variable name="delim" select="@delim"/>
         <xsl:variable name="matches" select="dts:resolve_citestructure($context,.)"/>
@@ -413,7 +413,7 @@
           </xsl:variable>
           <!-- when function is split do {@xml:id}.html -->
           <xsl:choose>
-            <xsl:when test="dts:resolve_citedata(.,$current,'#function') = 'split'">"{$parentcite || $delim || $citationpart}": "{dts:resolve_citedata(.,$current,'dc:identifier')}.html",<xsl:apply-templates select="$current/citeStructure" mode="citations">
+            <xsl:when test="dts:resolve_citedata(.,$current,'function') = 'split'">"{$parentcite || $delim || $citationpart}": "{dts:resolve_citedata(.,$current,'dc:identifier')}.html",<xsl:apply-templates select="$current/citeStructure" mode="citations">
                 <xsl:with-param name="context" select="."/>
                 <xsl:with-param name="parentcite" select="$parentcite || $delim || $citationpart"/>
                 <xsl:with-param name="parenttarget">{dts:resolve_citedata(.,$current,'dc:identifier')}.html</xsl:with-param>
