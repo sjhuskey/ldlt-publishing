@@ -383,7 +383,7 @@
         <xsl:for-each select="dts:resolve_citestructure($context, .)">
           <xsl:copy>
             <xsl:copy-of select="@*"/>
-            <dts-cite><xsl:value-of select="$current/@delim"/><xsl:evaluate context-item="." xpath="$use"/></dts-cite>
+            <dts-cite xmlns="http://www.tei-c.org/ns/1.0"><xsl:value-of select="$current/@delim"/><xsl:evaluate context-item="." xpath="$use"/></dts-cite>
             <xsl:apply-templates select="$current/citeStructure" mode="citables">
               <xsl:with-param name="context" select="."/>
             </xsl:apply-templates>
