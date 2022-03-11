@@ -3,9 +3,8 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:dts="https://w3id.org/dts/api#"
   xmlns:xlink="http://www.w3.org/1999/xlink"
-  xmlns="http://www.tei-c.org/ns/1.0"
   xpath-default-namespace="http://www.tei-c.org/ns/1.0"
-  exclude-result-prefixes="xs"
+  exclude-result-prefixes="xs dts xlink"
   expand-text="yes"
   version="3.0">
   <xsl:output method="html" html-version="5" indent="no"/>
