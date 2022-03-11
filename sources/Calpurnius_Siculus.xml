@@ -54,7 +54,7 @@
             <citeData property="dc:title" use="head"/>
             <citeData property="dc:identifier" use="@xml:id"/>
             <citeData property="function" use="'toc-entry'"/>
-            <!-- This structure should be split out into a separate document -->
+            <!-- This structure should be split out into a separate document. -->
             <citeData property="function" use="'split'"/>
             <!-- When it is split out, the bibliography should go along with it -->
             <citeData property="dc:requires" use="//front/div[@type='bibliography']"/>
