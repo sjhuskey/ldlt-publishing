@@ -11,7 +11,7 @@ convert() {
   saxon -s:"$1" -xsl:xslt/publish.xsl -o:"pub/$DIR/index.html"
 }
 
-for $f in $FILES
+for f in $FILES
 do
   echo "Processing file $f"
   convert "$f"
