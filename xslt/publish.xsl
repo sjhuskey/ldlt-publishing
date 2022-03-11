@@ -67,7 +67,7 @@
           </form>
         </div>
       </body>
-      <xsl:result-document href="../index.html">
+      <xsl:result-document href="../index.html" method="html" html-version="5">
         <xsl:call-template name="index"/>
       </xsl:result-document>
     </html>
@@ -263,7 +263,7 @@
       <xsl:evaluate xpath="$match" context-item="$doc"/>
     </xsl:variable>
     <xsl:for-each select="$matches/*">
-      <xsl:result-document href="{dts:resolve_id(.,$current)}.html">
+      <xsl:result-document href="{dts:resolve_id(.,$current)}.html" method="html" html-version="5">
         <html>
           <head>
             <meta charset="UTF-8"/>
