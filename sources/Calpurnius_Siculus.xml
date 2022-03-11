@@ -71,7 +71,7 @@
             <citeData property="function" use="'split'"/>
           </citeStructure>
         </citeStructure>
-        <!-- The @unit attribute marks a citeStructure as a citable unit and makes e.g., 4.100 resolvable to poem 4, line 100. -->
+        <!-- The @unit attribute marks a citeStructure as a citable unit and makes e.g., 4.100 resolvable to poem 4, line 100.  -->
         <citeStructure match="//div[@type='textpart']" use="@n" unit="poem">
           <citeData property="dc:identifier" use="@xml:id"/>
           <citeData property="dc:title" use="head"/>
