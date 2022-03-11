@@ -16,4 +16,4 @@ jobs:
       - uses: ./.github/actions/publish
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Published ${{ steps.files.outputs.added_modified }}
+          commit_message: Published new files.
