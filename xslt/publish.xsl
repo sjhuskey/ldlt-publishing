@@ -67,6 +67,32 @@
           </form>
         </div>
       </body>
+      <xsl:result-document href="../index.html">
+        <xsl:call-template name="index"/>
+      </xsl:result-document>
+    </html>
+  </xsl:template>
+  
+  <xsl:template name="index">
+    <html>
+      <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Library of Digital Latin Texts</title>
+        <link rel="stylesheet" href="css/tei-html.css"/>
+      </head>
+      <body>
+        <h1>Library of Digital Latin Texts</h1>
+        <div class="toc">
+          <ul>
+            <xsl:for-each select="uri-collection('../sources?select=*.xml')">
+              <li><a href="{replace(.,'.*/([^/]+).xml','$1')}">{translate(replace(.,'.*/([^/]+).xml','$1'),'_',' ')}</a></li>
+            </xsl:for-each>
+          </ul>
+        </div>
+        
+      </body>
     </html>
   </xsl:template>
   
